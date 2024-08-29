@@ -325,7 +325,7 @@ pub struct NativeBalance {
   // helius does not return this field if account don't exist on chain
   #[serde(default)]
   pub lamports: u64,
-  pub price_per_sol: BigDecimal,
+  pub price_per_sol: Option<BigDecimal>,
   pub total_price: Option<BigDecimal>,
 }
 
