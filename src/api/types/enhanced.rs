@@ -125,8 +125,10 @@ pub struct Token {
 #[derive(Deserialize, Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct TransactionError {
-  #[serde(rename = "InstructionError")]
-  pub instruciton_error: serde_json::Value,
+  #[serde(default)] // this can be empty
+  pub instruction_error: serde_json::Value,
+  #[serde(flatten, default)]
+  other: serde_json::Value,
 }
 
 #[derive(Deserialize, Serialize, Debug)]
