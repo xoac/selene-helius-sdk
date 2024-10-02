@@ -91,7 +91,6 @@ mod tests {
   use std::env;
   use std::str::FromStr;
   use std::sync::Once;
-  use tracing::info;
   use tracing_subscriber::EnvFilter;
 
   static INIT: Once = Once::new();
@@ -125,7 +124,7 @@ mod tests {
     pub fn new() -> Self {
       let env = dotenvy::dotenv();
       if env.is_err() {
-        info!("no .env file");
+        tracing::debug!("no .env file");
       }
       let key: Option<String> = env::var("HELIUS_API_KEY").ok();
       let http_client = reqwest::Client::new();

@@ -25,10 +25,10 @@ impl RequestHandler {
     T: DeserializeOwned + Default,
   {
     let path = String::from(url.path());
-    #[cfg(not(debug))]
+    #[cfg(not(feature = "debug"))]
     debug!("sending request {method} {path}");
 
-    #[cfg(debug)]
+    #[cfg(feature = "debug")]
     match body {
       None => debug!("sending request {method} {path}"),
       Some(b) => {
