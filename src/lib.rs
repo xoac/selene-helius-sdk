@@ -91,10 +91,12 @@ mod tests {
   use std::env;
   use std::str::FromStr;
   use std::sync::Once;
+  #[cfg(test)]
   use tracing_subscriber::EnvFilter;
 
   static INIT: Once = Once::new();
 
+  #[cfg(test)]
   #[allow(clippy::unwrap_used)]
   fn setup() {
     INIT.call_once(|| {
@@ -105,6 +107,7 @@ mod tests {
     });
   }
 
+  #[cfg(test)]
   #[rstest::fixture]
   fn config() -> Config {
     setup();
