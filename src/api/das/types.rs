@@ -280,7 +280,8 @@ pub struct FileQuality {
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq, Default)]
 pub struct Metadata {
-  pub attributes: Option<Vec<Attribute>>,
+  // FIXME: this can be array or key:value map
+  // pub attributes: Option<Vec<Attribute>>,
   pub description: Option<String>,
   #[serde(default)]
   pub name: String,
